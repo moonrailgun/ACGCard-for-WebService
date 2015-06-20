@@ -2,11 +2,13 @@
 class db{
 	function GetCon()
 	{
-		$con = mysql_connect($db_servername,$db_username,$db_password);
+		$con = mysql_connect($this->$db_servername,$this->$db_username,$this->$db_password);
 		if(!$con)
 		{
 			die('Could not connect: ' . mysql_error());
 		}
+		
+		mysql_select_db($this->$db_dbname, $con);
 		return $con;
 	}
 	
@@ -14,20 +16,22 @@ class db{
 	{
 		mysql_close($con);
 	}
-	
-	function Query($dbname,$command)
+	/*
+	function Query($command)
 	{
 		$con = GetCon();
-		mysql_select_db("my_db", $con);
-	
+		
 		$result = mysql_query($command);
+		CloseCon($con);
+		
 		return $result;
-	}
+	}*/
 	
-	$db_servername = "localhost";
-	$db_username = "root";
-	$db_password = "";
+	private $db_servername = "localhost";
+	private $db_dbname = "acgcard";
+	private $db_username = "root";
+	private $db_password = "";
 }
 
-
+$core_db = new db();
 ?>
