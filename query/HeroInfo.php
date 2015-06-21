@@ -2,9 +2,7 @@
 require '../core/db.php';
 $command = "SELECT * FROM card";
 
-$con = $core_db->GetCon($command);
-
-$result = mysql_query($command);
+$result = $core_db->Query($command);
 
 while($row = mysql_fetch_array($result))
 {
