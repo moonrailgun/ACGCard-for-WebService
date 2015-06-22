@@ -13,4 +13,19 @@ class heroInfo
 	public $BaseSpeed;
 	public $GrowSpeed;
 }
+
+class playerCard
+{
+	public $Id;
+	public $CardId;
+	public $CardName;
+	public $CardRarity;
+	public $CardOwnerId;
+	public $CardLevel;
+	public $CardOwnSkill;
+	public $Health;
+	public $Energy;
+	public $Attack;
+	public $Speed;
+}
 ?>
