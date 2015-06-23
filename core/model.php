@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class heroInfo
 {
 	public $CardId;
@@ -27,5 +27,12 @@ class playerCard
 	public $Energy;
 	public $Attack;
 	public $Speed;
+}
+class taskInfo
+{
+	public $TaskID;
+	public $TaskName;
+	public $TaskDes;
+	public $TaskExpire;
 }
 ?>

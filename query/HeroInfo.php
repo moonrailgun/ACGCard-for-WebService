@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require '../core/db.php';
 require '../core/model.php';
 $command = "SELECT * FROM card";

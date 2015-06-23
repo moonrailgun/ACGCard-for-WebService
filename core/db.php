@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class db{
 	function GetCon()
 	{
@@ -7,8 +7,13 @@ class db{
 		{
 			die('Could not connect: ' . mysql_error());
 		}
-		
+
 		mysql_select_db($this->db_dbname, $con);
+
+		mysql_query("set names ’utf8’ ");
+		mysql_query("set character_set_client=utf8");
+		mysql_query("set character_set_results=utf8");
+
 		return $con;
 	}
 	
