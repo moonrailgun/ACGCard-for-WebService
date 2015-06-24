@@ -35,4 +35,13 @@ class taskInfo
 	public $TaskDes;
 	public $TaskExpire;
 }
+
+class news
+{
+	public $NewsID;
+	public $Title;
+	public $Content;
+	public $PublishDate;
+	public $ExpireDate;
+}
 ?>
