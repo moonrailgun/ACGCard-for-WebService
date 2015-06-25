@@ -44,4 +44,16 @@ class news
 	public $PublishDate;
 	public $ExpireDate;
 }
+
+class playerinfo
+{
+	public $Uid;
+	public $PlayerName;
+	public $Level;
+	public $Coin;
+	public $Gem;
+	public $VipExpire;
+	public $OwnCardCount;
+	public $OwnCardList;
+}
 ?>

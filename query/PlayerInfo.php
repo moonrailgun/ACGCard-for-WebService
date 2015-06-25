@@ -2,9 +2,21 @@
 require '../core/db.php';
 require '../core/model.php';
 
-$CardOwnerId = (int)$_GET["uid"] or die("不合法查询条件,请根据uid进行查询");
+$playerUid = (int)$_GET["uid"] or die("不合法查询条件,请根据uid进行查询");
+$playerinfo = new playerinfo;
 
-$command = "SELECT * FROM card INNER JOIN cardinventory ON card.CardId = cardinventory.CardId WHERE CardOwnerId = '".$CardOwnerId."'";
+//角色基本信息
+$command = "SELECT * FROM playerinfo WHERE Uid = '".$playerUid."'";
+$result = $core_db->Query($command);
+$row = mysql_fetch_array($result);
+$playerinfo->Uid = (int)$row["Uid"];
+$playerinfo->PlayerName = (string)$row["PlayerName"];
+$playerinfo->Level = (int)$row["Level"];
+$playerinfo->Coin = (int)$row["Coin"];
+$playerinfo->Gem = (int)$row["Gem"];
+$playerinfo->VipExpire = (string)$row["VipExpire"];
+
+$command = "SELECT * FROM card INNER JOIN cardinventory ON card.CardId = cardinventory.CardId WHERE CardOwnerId = '".$playerUid."'";
 
 $result = $core_db->Query($command);
 $InventoryList = array();
@@ -26,9 +38,10 @@ while($row = mysql_fetch_array($result))
 	
 	$InventoryList[count($InventoryList)] = $playerCard;
 }
+$playerinfo->OwnCardList = $InventoryList;
+$playerinfo->OwnCardCount = count($InventoryList);
 
-$returnJson["Type"] = "inventory";
-$returnJson["Count"] = count($InventoryList);
-$returnJson["List"] = $InventoryList;
+$returnJson["Type"] = "playerinfo";
+$returnJson["Info"] = $playerinfo;
 echo json_encode($returnJson);
 ?>
