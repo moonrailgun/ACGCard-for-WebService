@@ -13,3 +13,6 @@ ACGCard for WebService
 - core——核心
 	- db.php——数据库查询核心
 	- model.php——数据模型
+- chat——聊天系统
+	- chat.php——核心
+	- closeWS.php——关闭websocket
